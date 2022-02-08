@@ -6,7 +6,6 @@ import pygame as pg
 from tkinter import messagebox, Tk
 import sys
 import os
-
 #pygame 시작해주기
 pg.init()
 
@@ -16,8 +15,8 @@ Tk().wm_withdraw()
 #중요하게 쓰는 내용을 변수로 미리 지정해놓기(다른 변수들과 구분을 위해 모든 글자 대문자로 했음)
 CAPTION = "MineSweeper"
 ICON = pg.image.load("mine.png")
-WIDTH = 1280
-HEIGHT = 720
+WIDTH = 420
+HEIGHT = 454
 FPS = 144
 FONT = pg.font.SysFont("arial", 32, True, True)
 cellSize = 24
@@ -29,6 +28,7 @@ WINDOW = pg.display
 WINDOW.set_caption(CAPTION)
 WINDOW.set_icon(ICON)
 SCREEN = WINDOW.set_mode((WIDTH, HEIGHT))
+
 
 #색깔, 이미지, 폰트
 RED = (255, 0, 0)
@@ -236,8 +236,6 @@ def victory():
 
 gameBoard = board()
 
-
-
 #While 문으로 True 무한루프 돌려서 창이 안꺼지게 만들기
 while RUNNING:
     """ pg.time.Clock().tick(FPS)   #프레임갱신을 내가 지정한 FPS로 설정하기
@@ -282,7 +280,8 @@ while RUNNING:
             vic = False
         else:
             exit(0)
-
+    elif lose == True:
+        lose = 2
 
     elif lose == 2:
         if messagebox.askretrycancel("Game Over!", "You Step On A Mine... T.T\nRetry?"):
